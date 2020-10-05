@@ -22,13 +22,26 @@ class MembersController < ApplicationController
   def edit
     @member = Member.find(params[:id])
   end
-
+ # 会員の新規登録
   def create
+    @member = Member.new(member_params)
+    if @member.save
+      redirect_to @member, notice: "会員を登録しました。"
+    else
+      render "new"
+    end 
   end
 
   def update
   end
 
   def destroy
+  end
+  
+  private
+  
+  # Strong Paramater
+  def member_params
+    params.require(:member).permit(:number, :name, :full_name, :email, :birthday, :gender, :administrator)
   end
 end

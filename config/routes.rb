@@ -4,4 +4,8 @@ Rails.application.routes.draw do
   
   get "about" => "top#about", as: "about"
   
+  resources :members do
+    get "search", on: :collection
+  end 
+  
 end

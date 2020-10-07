@@ -10,7 +10,8 @@ class Member < ApplicationRecord
     uniqueness: true
     
   validates :name, presence: true,
-    format: { with: /\A[A-Za-z][A-Za-z0-9]*\z/, allow_blank: true },
+    format: { with: /\A[A-Za-z][A-Za-z0-9]*\z/, allow_blank: true,
+            message: :invalid_member_name},
     length: { minimum: 2, maximum: 20, allow_blank: true },
     uniqueness: { case_sensitive: false }
     

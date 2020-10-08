@@ -8,4 +8,6 @@ Rails.application.routes.draw do
     get "search", on: :collection
   end 
   
+  resource :session, only: [:create, :destroy]
+  
 end

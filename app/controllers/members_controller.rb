@@ -55,6 +55,6 @@ class MembersController < ApplicationController
   
   # Strong Paramater
   def member_params
-    params.require(:member).permit(:number, :name, :full_name, :email, :birthday, :gender, :administrator)
+    params.require(:member).permit(:number, :name, :full_name, :email, :birthday, :gender, :administrator, :password)
   end
 end

@@ -12,7 +12,7 @@
     <p>
       <%= truncate(entry.body, length: 80) %><%= link_to "もっと読む", entry %>
     </p>
-    <% render "footer", entry: entry %>
+    <%= render "footer", entry: entry %>
   <% end %>
   <%= paginate @entries %>
 <% else %>

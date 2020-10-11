@@ -25,7 +25,7 @@ class MembersController < ApplicationController
   def edit
     @member = Member.find(params[:id])
   end
- # 会員の新規登録
+ # 会員の新規登録　ストロングパラメータを使用
   def create
     @member = Member.new(member_params)
     if @member.save
@@ -35,6 +35,7 @@ class MembersController < ApplicationController
     end 
   end
 
+  # 更新　ストロングパラメータを使用
   def update
     @member = Member.find(params[:id])
     @member.assign_attributes(member_params)
@@ -51,10 +52,22 @@ class MembersController < ApplicationController
     redirect_to :members, notice: "会員を削除しました。"
   end
   
+  
   private
   
-  # Strong Paramater
+  # Strong Paramater 書き直しします
+  
+  # def member_params
+  #   params.require(:member).permit(:number, :name, :full_name, :email, :birthday, :gender, :administrator, :password)
+  # end
+  
+  
+  # createアクションの時には、 :password を permitメソッドに渡すようにする
   def member_params
-    params.require(:member).permit(:number, :name, :full_name, :email, :birthday, :gender, :administrator, :password)
+    attrs = [ :number, :name, :full_name, :gender, :birthday, :email, :administrator ]
+    
+    attrs << :password if params[:action] == "create"
+    
+    params.require(:member).permit(attrs)
   end
 end

@@ -16,5 +16,12 @@ module MemberProgram
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     config.i18n.default_locale = :ja
+    
+    
+    config.exceptions_app = ->(env) do
+      ErrorsController.action(:show).call(env)
+    end
+    
+    
   end
 end

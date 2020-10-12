@@ -12,7 +12,7 @@ class PasswordsController < ApplicationController
   
   def update
     @member = current_member
-    current_password = params[:account][:current_password]
+    current_password = account_params[:current_password]
     
     if current_password.present?
       if @member.authenticate(current_password)

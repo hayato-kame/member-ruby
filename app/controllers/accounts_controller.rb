@@ -23,7 +23,7 @@ class AccountsController < ApplicationController
   
   # Strong Paramater :administratorは入れない
   def account_params
-    params.require(:account).permit(:new_profile_picture, :number, :name, :full_name, :email, :birthday, :gender)
+    params.require(:account).permit(:new_profile_picture, :remove_profile_picture, :number, :name, :full_name, :email, :birthday, :gender)
   end 
   
 end

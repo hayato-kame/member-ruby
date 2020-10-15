@@ -4,6 +4,8 @@ class EntryImage < ApplicationRecord
   
   has_one_attached :data
   
+  acts_as_list scope: :entry
+  
   attribute :new_data
   
   validates :new_data, presence: { on: :create }

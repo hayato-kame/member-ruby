@@ -4,6 +4,10 @@ class Entry < ApplicationRecord
   
   has_many :images, class_name: "EntryImage"
   
+  has_many :votes, dependent: :destroy
+  has_many :voters, through: :votes, source: :member
+  
+  
   STATUS_VALUES = %w(draft member_only public)
   
   validates :title, presence: true, length: { maximum: 200 }

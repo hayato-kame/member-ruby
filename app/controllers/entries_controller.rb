@@ -60,6 +60,15 @@ class EntriesController < ApplicationController
     redirect_to :entries, notice: "記事を削除しました。"
   end 
   
+  
+  # 投票
+  def like
+    @entry = Entry.published.find(params[:id])
+    current_member.voted_entries << @entry
+    redirect_to @entry, notice: "投票しました。"
+  end 
+  
+  
   private
   
   #Strong Paramater

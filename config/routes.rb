@@ -28,4 +28,8 @@ Rails.application.routes.draw do
     end 
   end 
   
+  namespace :admin do
+    root "top#index"
+  end 
+  
 end
